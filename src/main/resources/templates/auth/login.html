@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Bejelenkezés</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
+	<link href="css/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/core.css" rel="stylesheet" type="text/css" />
+	<link href="css/components.css" rel="stylesheet" type="text/css" />
+	<link href="css/colors.css" rel="stylesheet" type="text/css" />
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="js/pace.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body class="login-container">
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" th:href="@{/}"><img src="images/logo_light.png" alt="" /></a>
+
+			<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Content area -->
+				<div class="content">
+
+					<!-- Simple login form -->
+					<form action="index.html" th:action="@{/login}" method="post">
+						<div class="panel panel-body login-form">
+							<div class="text-center">
+								<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+								<h5 class="content-group">Jelentkezz be!<small class="display-block">Add meg az adataidat alul</small></h5>
+							</div>
+
+							<div class="form-group has-feedback has-feedback-left">
+								<input type="text" class="form-control" id="username" name="username" placeholder="Felhasználói név" />
+								<div class="form-control-feedback">
+									<i class="icon-user text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group has-feedback has-feedback-left">
+								<input type="password" class="form-control" id="password" name="password" placeholder="Jelszó" />
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">Bejelentkezem <i class="icon-circle-right2 position-right"></i></button>
+							</div>
+						</div>
+					</form>
+					<!-- /simple login form -->
+
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+	
+	<script type="text/javascript">
+		document.getElementById("username").focus();
+	</script>	
+
+</body>
+</html>

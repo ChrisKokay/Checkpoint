@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Checkpoint nyilvántartó</title>
+
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css" />
+	<link href="css/icons/icomoon/styles.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/core.css" rel="stylesheet" type="text/css" />
+	<link href="css/components.css" rel="stylesheet" type="text/css" />
+	<link href="css/colors.css" rel="stylesheet" type="text/css" />
+	<link href="css/appcomponents.css" rel="stylesheet" type="text/css" />
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<script type="text/javascript" src="js/pace.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/blockui.min.js"></script>
+	<!-- <script type="text/javascript" src="js/datatables.min.js"></script>  -->		
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/datatables_basic.js"></script>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<a class="navbar-brand" th:href="@{/}"><img src="images/logo_light.png" alt="" /></a>
+
+			<ul class="nav navbar-nav visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown">
+						<img src="images/image.png" alt="" />
+						<span sec:authentication="name">Anonymous </span>
+						<i class="caret"></i>
+					</a>
+
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="#"><i class="icon-user-plus"></i> Beállításaim</a></li>
+						<!-- 
+						<li><a href="#"><i class="icon-coins"></i> My balance</a></li>
+						<li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+						 -->
+						<li class="divider"></li>
+						<li><a th:href="@{/logout}"><i class="icon-switch2"></i> Kilépés</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main sidebar -->
+			<div class="sidebar sidebar-main">
+				<div class="sidebar-content">
+
+					<!-- User menu -->
+					<div class="sidebar-user">
+						<div class="category-content">
+							<div class="media">
+								<a href="#" class="media-left"><img src="images/image.png" class="img-circle img-sm" alt="" /></a>
+								<div class="media-body">
+									<span sec:authentication="name" class="media-heading text-semibold">Victoria Baker</span>
+									<div class="text-size-mini text-muted">
+										<i class="icon-pin text-size-small"></i> &nbsp;Budapest
+									</div>
+								</div>
+
+								<div class="media-right media-middle">
+									<ul class="icons-list">
+										<li>
+											<a href="#"><i class="icon-cog3"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /user menu -->
+
+
+					<!-- Main navigation -->
+					<div class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-main navigation-accordion">
+
+								<!-- Main -->
+								<li class="navigation-header"><span>Főmenü</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li th:class="${act}" class="active"><a th:href="@{/}"><i class="icon-home4"></i> <span>Főoldal</span></a></li>
+								<li>
+									<a href="#"><i class="icon-stack"></i> <span>Törzsadatok</span></a>
+									<ul>
+										<li><a th:href="@{/addamps}" href="#">Erősítők felvitele</a></li>
+										<li><a th:href="@{/addbands}" href="#">Zenekarok felvitele</a></li>
+										<li><a th:href="@{/addrevs}" href="#">Bevételtípus felvitele</a></li>
+										<li><a th:href="@{/addcosts}" href="#">Kiadástípus felvitele</a></li>
+										<li><a th:href="@{/addbuffets}" href="#">Büfétípus felvitele</a></li>
+									</ul>
+								</li>
+								<li th:class="${actrev}"><a th:href="@{/revenues}"><i class="icon-cart-add"></i> <span>Bevételek kezelése</span></a></li>
+								<li th:class="${actcost}"><a th:href="@{/costs}"><i class="icon-box-add"></i> <span>Kiadások kezelése</span></a></li>
+								<li th:class="${actbuf}"><a th:href="@{/buffet}"><i class=" icon-cup2"></i> <span>Büfé kezelése</span></a></li>
+								<li th:class="${actrep}"><a th:href="@{/reports}"><i class="icon-file-spreadsheet2"></i> <span>Riportok készítése</span></a></li>
+								<!-- /main -->
+
+							</ul>
+						</div>
+					</div>
+					<!-- /main navigation -->
+
+				</div>
+			</div>
+			<!-- /main sidebar -->
+
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Checkpoint</span> - Nyilvántartó</h4>
+						</div>
+					</div>
+
+					<div class="breadcrumb-line">
+						<ul class="breadcrumb">
+							<li><a th:href="@{/}" href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
+							<li><a href="#">Főoldal</a></li>
+							<li class="active">Listanézet</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /page header -->
+
+				<div layout:fragment="mainContent">
+				</div>				
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>
